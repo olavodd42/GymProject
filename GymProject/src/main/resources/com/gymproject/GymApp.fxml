@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane id="myGridPane" fx:id="myGridPane" alignment="center" hgap="10" onDragDetected="#switchToScene2" vgap="10" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gymproject.fxmlController">
+    <padding><Insets bottom="10" left="25" right="25" top="25" /></padding>
+    <columnConstraints>
+        <ColumnConstraints halignment="RIGHT" maxWidth="Infinity" minWidth="100" prefWidth="100">
+        </ColumnConstraints>
+        <ColumnConstraints hgrow="ALWAYS" maxWidth="Infinity" minWidth="200" prefWidth="200">
+        </ColumnConstraints>
+    </columnConstraints>
+
+    <Label text="Login" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.rowSpan="1">
+        <font>
+            <Font name="Arial" size="24" />
+        </font>
+        <GridPane.margin>
+            <Insets bottom="20" left="0" right="0" top="20" />
+        </GridPane.margin>
+    </Label>
+
+    <Label text="Nome de usuário : " GridPane.columnIndex="0" GridPane.rowIndex="1">
+    </Label>
+
+    <TextField fx:id="nameField" prefHeight="40" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+    <Label text="Senha : " GridPane.columnIndex="0" GridPane.rowIndex="3">
+    </Label>
+    <!-- Add Password Field -->
+    <PasswordField fx:id="passwordField" prefHeight="40" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+    <Button fx:id="submitButton" defaultButton="true" onAction="#switchToScene2" prefHeight="40" prefWidth="55.0" text="Enviar" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.rowSpan="1">
+        <GridPane.margin>
+            <Insets bottom="20" left="0" right="0" top="20" />
+        </GridPane.margin>
+    </Button>
+   <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="69.0" text="Cadastrar" GridPane.rowIndex="4" />
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
+</GridPane>

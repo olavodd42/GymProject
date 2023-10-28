@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="505.0" prefWidth="748.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gymproject.fxmlController">
+   <children>
+      <ToolBar prefHeight="35.0" prefWidth="729.0">
+        <items>
+          <Button mnemonicParsing="false" text="Button" />
+        </items>
+      </ToolBar>
+      <TilePane layoutY="35.0" prefHeight="471.0" prefWidth="748.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#switchToScene3" prefHeight="160.0" prefWidth="330.0" text="Gerenciar Alunos" />
+            <Button mnemonicParsing="false" prefHeight="157.0" prefWidth="346.0" text="Gerenciar Instrutores" />
+            <Button mnemonicParsing="false" prefHeight="147.0" prefWidth="335.0" text="Alterar Dados da Academia" />
+            <Button mnemonicParsing="false" prefHeight="150.0" prefWidth="346.0" text="Gerenciar Planos" />
+            <Button mnemonicParsing="false" prefHeight="133.0" prefWidth="331.0" text="Button" />
+            <Button mnemonicParsing="false" prefHeight="134.0" prefWidth="341.0" text="Button" />
+         </children>
+      </TilePane>
+   </children>
+</AnchorPane>

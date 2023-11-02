@@ -1,4 +1,4 @@
-module com.example.gymproject {
+module com.gymproject {
     requires javafx.controls;
     requires javafx.fxml;
 
@@ -6,7 +6,12 @@ module com.example.gymproject {
     requires com.dlsc.formsfx;
     requires net.synedra.validatorfx;
     requires org.kordamp.bootstrapfx.core;
-    requires junit;
+    requires org.junit.jupiter.api;
+
+    requires javafx.base;
+    requires javafx.graphics;
+    requires hamcrest.core;
+    requires java.desktop;
 
     opens com.gymproject to javafx.fxml;
     exports com.gymproject;

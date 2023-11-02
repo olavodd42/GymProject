@@ -1,46 +1,61 @@
 package com.gymproject;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.ObservableSet;
 
-import static junit.framework.Assert.assertTrue;
-import static junit.framework.Assert.assertFalse;
-//import static org.junit.Assert;
+import java.util.LinkedHashSet;
+import java.util.LinkedList;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+//import static junit.framework.Assert.assertTrue;
+//import static junit.framework.Assert.assertFalse;
+
+//import static org.junit.Assert.assertTrue;
+//import static org.junit.Assert.assertFalse;
 
 public class TabelaAlunos {
-	LinkedHashSet<Aluno> table;
-	public int numAlunos;
+	private static final LinkedList<Aluno> table = new LinkedList<>();;
+	private static int numAlunos=0;
+	private static ObservableList<Aluno> data;
 
-	public TabelaAlunos() {
-		this.table = new LinkedHashSet<Aluno>();
-		assertTrue(table.isEmpty());
-		numAlunos = 0;
+	public static ObservableList<Aluno> getData() {
+		return data;
 	}
 
-	public void addElement(Aluno a) {
+	public static void setData(ObservableList<Aluno> data) {
+		TabelaAlunos.data = data;
+	}
+
+	/*public TabelaAlunos() {
+		assertTrue(table.isEmpty());
+	}*/
+
+	public static void addElement(Aluno a) {
 		assertTrue(table.add(a));
-		assertFalse(table.add(a));
 		assertTrue(table.contains(a));
 		numAlunos++;
 	}
 	
-	public boolean searchElement(Aluno a) {
+	public static boolean searchElement(Aluno a) {
         return table.contains(a);
     }
 	
-	public void removeElement(Aluno a) {
+	public static void removeElement(Aluno a) {
 		assertTrue(table.remove(a));
 		assertFalse(table.contains(a));
 		numAlunos--;
 	}
 	
-	public void printList() {
-		Iterator<Aluno> itr = table.iterator();
-		System.out.println("Tabela de Alunos\n");
-		while (itr.hasNext()) {
-			System.out.println(itr.next() + "\n");
-		}
+	public static ObservableList<Aluno> getTable() {
+		return data;
 	}
+
+
+
+	public static void setObservable () {
+		data = FXCollections.observableList(table);
+	}
+
 }

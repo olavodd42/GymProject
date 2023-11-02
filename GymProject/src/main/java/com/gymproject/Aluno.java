@@ -1,11 +1,14 @@
 package com.gymproject;
 
+import javafx.beans.property.*;
+
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Aluno extends Pessoa {
-	protected String FormaPag, defFisica, defMental, plano, objetivo;
-	protected int dataCad, dataNasc, dataPag;
-	protected boolean pago, estudante;
+	protected SimpleStringProperty FormaPag, defFisica, defMental, plano, objetivo = new SimpleStringProperty();
+	protected ObjectProperty<LocalDate> dataCad, dataNasc, dataPag;
+	protected SimpleBooleanProperty pago, estudante;
 	protected String avaliacaoFisica;
 
 
@@ -18,7 +21,7 @@ public class Aluno extends Pessoa {
 		this.plano = plano;
 		this.estudante = estudante;
 	}
-	
+
 	public Aluno(String nome, String email, int id, String telefone, int CPF, String FormaPag, boolean pago, String defMental, String plano, boolean estudante) {
 		super(nome, email, id, telefone, CPF);
 		this.FormaPag = FormaPag;
@@ -28,8 +31,10 @@ public class Aluno extends Pessoa {
 		this.plano = plano;
 		this.estudante = estudante;
 	}*/
-	
-	public Aluno(String nome, String email, int id, String telefone, int CPF, String FormaPag, boolean pago, String defFisica, String plano, boolean estudante, int dataCad, int dataNasc, int dataPag, String objetivo) {
+
+	public Aluno(SimpleStringProperty nome, SimpleStringProperty email, IntegerProperty id, SimpleStringProperty telefone, SimpleStringProperty CPF,
+				 SimpleStringProperty FormaPag, SimpleBooleanProperty pago, SimpleStringProperty defFisica, SimpleStringProperty plano, SimpleBooleanProperty estudante,
+				 ObjectProperty<LocalDate> dataCad, ObjectProperty<LocalDate> dataNasc, ObjectProperty<LocalDate> dataPag, SimpleStringProperty objetivo) {
 		super(nome, email, id, telefone, CPF);
 		this.FormaPag = FormaPag;
 		this.pago = pago;
@@ -43,7 +48,11 @@ public class Aluno extends Pessoa {
 		this.avaliacaoFisica = null;
 	}
 
-	public Aluno(String nome, String email, int id, String telefone, int CPF, String FormaPag, boolean pago, String defFisica, String plano, boolean estudante, int dataCad, int dataNasc, int dataPag, String objetivo, String avaliacaoFisica) {
+	public Aluno(SimpleStringProperty nome, SimpleStringProperty email, IntegerProperty id, SimpleStringProperty telefone,
+				 SimpleStringProperty CPF, SimpleStringProperty FormaPag, SimpleBooleanProperty pago, SimpleStringProperty defFisica,
+				 SimpleStringProperty plano, SimpleBooleanProperty estudante, ObjectProperty<LocalDate> dataCad,
+				 ObjectProperty<LocalDate> dataNasc, ObjectProperty<LocalDate> dataPag, SimpleStringProperty objetivo,
+				 String avaliacaoFisica) {
 		super(nome, email, id, telefone, CPF);
 		this.FormaPag = FormaPag;
 		this.pago = pago;
@@ -56,108 +65,132 @@ public class Aluno extends Pessoa {
 		this.objetivo = objetivo;
 		this.avaliacaoFisica = avaliacaoFisica;
 	}
-	
-	public String getFormaPag() {
-		return FormaPag;
-	}
-	
-	public String getDefFisica() {
-		return defFisica;
-	}
-	
-	
-	public String getPlano() {
-		return plano;
-	}
-	
-	public boolean ifPago() {
-		return pago;
-	}
-	
-	public boolean ifEstudante() {
-		return estudante;
-	}
-	
-	public int getDataCad() {
-		return dataCad;
-	}
-	
-	public int getDataNasc() {
-		return dataNasc;
-	}
-	
-	public int getDataPag() {
-		return dataPag;
-	}
-	
-	public String getObj() {
-		return objetivo;
-	}
+
 	public String getAvaliacaoFisica() {
 		return avaliacaoFisica;
-	}
-	
-	public void alterarFormaPag(String FormaPag) {
-		this.FormaPag = FormaPag;
-	}
-	
-	public void setPago() {
-		this.pago = true;
-	}
-	
-	public void setNotPago() {
-		this.pago = false;
-	}
-	
-	public void setDefFisica(String defFisica) {
-		this.defFisica = defFisica;
-	}
-	
-	
-	public void setPlano(String plano) {
-		this.plano = plano;
-	}
-	
-	public void setEstudante() {
-		this.estudante = true;
-	}
-	
-	public void setNotEstudante() {
-		this.estudante = false;
-	}
-	
-	public void dataPag(int dataPag) {
-		this.dataPag = dataPag;
-	}
-	
-	public void setObj(String objetivo) {
-		this.objetivo = objetivo;
 	}
 
 	public void setAvaliacaoFisica(String avaliacaoFisica) {
 		this.avaliacaoFisica = avaliacaoFisica;
 	}
-	
-	public String toString() {
-		String restricaoFisica = Objects.requireNonNullElse(getDefFisica(), "Não possui.");
-		if (ifPago() && ifEstudante()) {
-			return super.toString() + "\nFormaPag: " + getFormaPag() + "\nPagamento: em dia. Plano: " + getPlano()
-			+ "\nEstudante: sim.\nData de Cadastro: " + getDataCad() + "\nData de Nascimento: " + getDataNasc() + "\nData de Pagamento: " + getDataPag() 
-			+ "\nObjetivo principal: " + getObj() + "\nRestrição(s) Física(s): " + restricaoFisica;
-		}
-		else if (ifPago()) {
-			return super.toString() + "\nFormaPag: " + getFormaPag() + "\nPagamento: em dia. Plano: " + getPlano()
-			+ "\nEstudante: não.\nData de Cadastro: " + getDataCad() + "\nData de Nascimento: " + getDataNasc() + "\nData de Pagamento: " + getDataPag() 
-			+ "\nObjetivo principal: " + getObj() + "\nRestrição(s) Física(s): " + restricaoFisica;
-		}
-		else if (ifEstudante()) {
-			return super.toString() + "\nFormaPag: " + getFormaPag() + "\nPagamento: Vencido. Plano: " + getPlano()
-			+ "\nEstudante: sim.\nData de Cadastro: " + getDataCad() + "\nData de Nascimento: " + getDataNasc() + "\nData de Pagamento: " + getDataPag() 
-			+ "\nObjetivo principal: " + getObj() + "\nRestrição(s) Física(s): " + restricaoFisica;
-		}	
 
-		return super.toString() + "\nFormaPag: " + getFormaPag() + "\nPagamento: Vencido. Plano: " + getPlano()
-		+ "\nEstudante: não.\nData de Cadastro: " + getDataCad() + "\nData de Nascimento: " + getDataNasc() + "\nData de Pagamento: " + getDataPag() 
-		+ "\nObjetivo principal: " + getObj() + "\nRestrição(s) Física(s): " + restricaoFisica;
+	public boolean isEstudante() {
+		return estudante.get();
+	}
+
+	public SimpleBooleanProperty estudanteProperty() {
+		return estudante;
+	}
+
+	public void setEstudante(boolean estudante) {
+		this.estudante.set(estudante);
+	}
+
+	public boolean isPago() {
+		return pago.get();
+	}
+
+	public SimpleBooleanProperty pagoProperty() {
+		return pago;
+	}
+
+	public void setPago(boolean pago) {
+		this.pago.set(pago);
+	}
+
+	public LocalDate getDataPag() {
+		return dataPag.get();
+	}
+
+	public ObjectProperty<LocalDate> dataPagProperty() {
+		return dataPag;
+	}
+
+	public void setDataPag(LocalDate dataPag) {
+		this.dataPag.set(dataPag);
+	}
+
+	public LocalDate getDataNasc() {
+		return dataNasc.get();
+	}
+
+	public ObjectProperty<LocalDate> dataNascProperty() {
+		return dataNasc;
+	}
+
+	public void setDataNasc(LocalDate dataNasc) {
+		this.dataNasc.set(dataNasc);
+	}
+
+	public LocalDate getDataCad() {
+		return dataCad.get();
+	}
+
+	public ObjectProperty<LocalDate> dataCadProperty() {
+		return dataCad;
+	}
+
+	public void setDataCad(LocalDate dataCad) {
+		this.dataCad.set(dataCad);
+	}
+
+	public String getObjetivo() {
+		return objetivo.get();
+	}
+
+	public SimpleStringProperty objetivoProperty() {
+		return objetivo;
+	}
+
+	public void setObjetivo(String objetivo) {
+		this.objetivo.set(objetivo);
+	}
+
+	public String getPlano() {
+		return plano.get();
+	}
+
+	public SimpleStringProperty planoProperty() {
+		return plano;
+	}
+
+	public void setPlano(String plano) {
+		this.plano.set(plano);
+	}
+
+	public String getDefFisica() {
+		return defFisica.get();
+	}
+
+	public SimpleStringProperty defFisicaProperty() {
+		return defFisica;
+	}
+
+	public void setDefFisica(String defFisica) {
+		this.defFisica.set(defFisica);
+	}
+
+	public String getDefMental() {
+		return defMental.get();
+	}
+
+	public SimpleStringProperty defMentalProperty() {
+		return defMental;
+	}
+
+	public void setDefMental(String defMental) {
+		this.defMental.set(defMental);
+	}
+
+	public String getFormaPag() {
+		return FormaPag.get();
+	}
+
+	public SimpleStringProperty formaPagProperty() {
+		return FormaPag;
+	}
+
+	public void setFormaPag(String formaPag) {
+		this.FormaPag.set(formaPag);
 	}
 }

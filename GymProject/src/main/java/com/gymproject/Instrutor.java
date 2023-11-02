@@ -1,10 +1,14 @@
 package com.gymproject;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 public class Instrutor extends Funcionario {
 	protected String inscricaoCREF, filiacao, naturalidade, nacionalidade;
 	protected int expedicao, validade, nascimento;
-	public Instrutor(String nome, String email, int id, String telefone, int CPF, int RG, float salario, String inscricaoCREF, 
-	int expedicao, int validade, String filiacao, String naturalidade, String nacionalidade, int nascimento) {
+	public Instrutor(SimpleStringProperty nome, SimpleStringProperty email, IntegerProperty id, SimpleStringProperty telefone,
+					 SimpleStringProperty CPF, int RG, float salario, String inscricaoCREF, int expedicao, int validade,
+					 String filiacao, String naturalidade, String nacionalidade, int nascimento) {
 		super(nome, email, id, telefone, CPF, RG, salario);
 		this.inscricaoCREF = inscricaoCREF;
 		this.expedicao = expedicao;

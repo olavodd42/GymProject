@@ -1,7 +1,11 @@
 package com.gymproject;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 public class Gerente extends Funcionario {
-	public Gerente(String nome, String email, int id, String telefone, int CPF, int RG, float salario) {
+	public Gerente(SimpleStringProperty nome, SimpleStringProperty email, IntegerProperty id, SimpleStringProperty telefone,
+				   SimpleStringProperty CPF, int RG, float salario) {
 		super(nome, email, id, telefone, CPF, RG, salario);
 	}
 	
